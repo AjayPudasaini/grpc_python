@@ -1,0 +1,20 @@
+// Unary connection
+
+syntax = "proto3";
+
+package helloworld;
+
+service HelloWorldService {
+    rpc SayHello(HelloRequest) returns (HelloResponse) {}
+  }
+  
+message HelloRequest {
+string req_msg = 2;
+}
+  
+message HelloResponse {
+string res_msg = 2;
+}
+
+
+// python -m grpc_tools.protoc -I./protos --python_out=. --pyi_out=. --grpc_python_out=. ./protos/hello_world.proto

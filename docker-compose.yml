@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  proj1:
+    build: .
+    command: "python server.py && python client.py"
+    ports:
+      - "9005:9005"
+    volumes:
+      - .:/proj1
+    restart: always
+    depends_on:
+      - proj2
+
+
+  proj2:
+    build: .
+    command: "python server.py && python client.py"
+    ports:
+      - "9006:9006"
+    volumes:
+     - .:/proj2
+    restart: always
+    depends_on:
+      - proj3
+
+  proj3:
+    build: .
+    command: "python server.py && python client.py"
+    ports:
+      - "9007:9007"
+    volumes:
+     - .:/proj3
+    restart: always
+    depends_on:
+      - proj1

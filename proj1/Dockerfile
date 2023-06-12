@@ -1,6 +1,11 @@
-FROM python3
-WORKDIR /proj1
-COPY . .
-COPY ./requirements.txt /proj1/requirements.txt
+
+FROM python:3.10.6
+
+RUN mkdir proj1_v2
+WORKDIR /proj1_v2
+COPY /proj1/ /proj1_v2
+
+RUN pip install --upgrade pip
+
 RUN pip install -r requirements.txt
-# CMD ["python", "server.py"]
+
